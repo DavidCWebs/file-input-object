@@ -29,15 +29,17 @@ int main()
 	
 	try {
 		int index;
+
 		// Output to tty
 		std::streambuf *backup = std::cout.rdbuf();
 		std::ofstream out("/dev/tty");
 		std::cout.rdbuf(out.rdbuf());
-
+		
+		// This should print to screen even if output is redirected to file.
 		std::cout << "Enter index: ";
 		std::cin >> index;
 		
-		std::cout.rdbuf(backup); // write to original cout
+		std::cout.rdbuf(backup); // Reset the original streambuf to std::cout
 		Record s = *(records[0]);
 		std::cout << "value: " << s[index] << '\n';
 	} catch (const IndexOutOfBoundsException& e) {

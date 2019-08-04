@@ -42,9 +42,10 @@ Switching from File Redirection to Terminal
 When input is redirected from a file, `std::cin` refers to the redirected file. If you need to get input from the terminal at a later stage in the programme, you can assign another input buffer using `std::cin.rdbuf()`.
 
 ```C++
-
+// Define an input stream as the terminal for the current process (/dev/tty)
 std::fstream in("/dev/tty");
 
+// Set the streambuf of std::cin as the streambuf of /dev/tty.
 std::cin.rdbuf(in.rdbuf());
 // stdin is now /dev/tty - keyboard input.
 ```
@@ -55,9 +56,20 @@ For a working example, see [main.cpp line 22][1].
 
 The next line sets the `std::streambuf` for `std::cin` to the `std::streambuf` of `in` which has been set to `dev/tty`. 
 
+The function `std::ios::rdbuf()` is used to get and set a stream buffer:
+
+```C++
+streambuf* rdbuf() const; // get - returns a pointer to the stream buffer of the object associated with stream
+streambuf* rdbuf (streambuf* sb); // sets the object pointed at by sb, clears error flags.
+```
+Headers: `<ios> <iostream>`.
+
+
 References
 ----------
 * [fstream][2]
+* [Controlling terminal: `/dev/tty`][3]
 
 [1]: main.cpp#22
 [2]: http://www.cplusplus.com/reference/fstream/fstream/
+[3]: http://tldp.org/HOWTO/Text-Terminal-HOWTO-7.html#ss7.3
