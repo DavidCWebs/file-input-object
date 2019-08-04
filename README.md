@@ -20,7 +20,7 @@ Redirection in Linux involves changing standard input/output devices.
 
 Usually, the standard input device `stdin` is the keyboard and the standard output device `stdout` is the screen.
 
-This means that in C++ `std::cin >> input;` accepts input from the keyboard, and `std::cout >> output` outputs data to the screen.
+This means that in C++ `std::cin >> input;` accepts input from the keyboard, and `std::cout << output` outputs data to the screen.
 
 To input data from a file, redirection can be used:
 
@@ -35,7 +35,29 @@ If you run the binary file without supplying data by means of file redirection, 
 
 * Line-by-line, with each line representing a separate object (`\n` delineates objects).
 * Individual scores are separated by spaces.
+* Input is ended by entering Ctrl-D which is the Linux end-of-file signal.
 
 Switching from File Redirection to Terminal
 -------------------------------------------
+When input is redirected from a file, `std::cin` refers to the redirected file. If you need to get input from the terminal at a later stage in the programme, you can assign another input buffer using `std::cin.rdbuf()`.
 
+```C++
+
+std::fstream in("/dev/tty");
+
+std::cin.rdbuf(in.rdbuf());
+// stdin is now /dev/tty - keyboard input.
+```
+
+For a working example, see [main.cpp line 22][1].
+
+`std::fstream` is the input/output file stream class. The code above associates the `/dev/tty` (terminal device) stream with the variable `in`.
+
+The next line sets the `std::streambuf` for `std::cin` to the `std::streambuf` of `in` which has been set to `dev/tty`. 
+
+References
+----------
+* [fstream][2]
+
+[1]: main.cpp#22
+[2]: http://www.cplusplus.com/reference/fstream/fstream/
