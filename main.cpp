@@ -10,7 +10,7 @@ int main()
 		auto s = std::make_unique<Record>();
 
 		// Input data to this object - reset object if EOF is indicated
-		if (s->inputFromStdinFile() == -1) {
+		if (s->inputFromStdin() == -1) {
 			s.reset();
 			break;
 		}

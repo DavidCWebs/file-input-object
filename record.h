@@ -16,7 +16,7 @@ class Record {
 private:
 	std::vector<int> scores;
 public:
-	int inputFromStdinFile();
+	int inputFromStdin();
 	int input(std::string line);
 	int& operator[](int i);
 	bool isValidIndex(int i);

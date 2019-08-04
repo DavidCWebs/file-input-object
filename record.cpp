@@ -1,6 +1,14 @@
 #include "record.h"
 
-int Record::inputFromStdinFile()
+/**
+ * Designed to read stdin from a file redirect:
+ * `./bin/main < input`
+ *
+ * There are better ways of processing data from a file (e.g. use fstream to read
+ * from file), but this is an exercise that riffs on accepting a redirected file
+ * as stdin.
+ * */
+int Record::inputFromStdin()
 {
 	// Discard leading whitespace from input stream
 	std::cin >> std::ws;
