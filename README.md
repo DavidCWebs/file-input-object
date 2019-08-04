@@ -10,7 +10,7 @@ A vector of `unique_ptr` to objects is used to store objects.
 
 Use Case
 --------
-I put this project together to better understand input streams in C++. I don't know if there is a practical use case. The aim was to accept input by means of file redirection _or_ terminal input. I also wanted to switch to terminal input for additional interaction in the event of file redirection input of the main body of data.
+I put this project together to better understand input streams in C++. The aim was to accept input by means of file redirection _or_ terminal input. I also wanted to switch to terminal input for additional interaction in the event of file redirection input of the main body of data.
 
 One interesting result of this approach is that you can input data either by means of file redirection or by means of terminal input in the default `stdin` way.
 
@@ -70,6 +70,6 @@ References
 * [fstream][2]
 * [Controlling terminal: `/dev/tty`][3]
 
-[1]: main.cpp#22
+[1]: main.cpp#L22
 [2]: http://www.cplusplus.com/reference/fstream/fstream/
 [3]: http://tldp.org/HOWTO/Text-Terminal-HOWTO-7.html#ss7.3
