@@ -27,7 +27,7 @@ To input data from a file, redirection can be used:
 ```bash
 ./myProg < input.txt
 ```
-In this case, the shell streams in the contents of `input.txt` to stdin instead of typing input at the terminal.
+In this case, the shell streams in the contents of `input.txt` to stdin instead of accepting keyboard input from the terminal.
 
 Terminal Input
 --------------
@@ -47,6 +47,7 @@ std::fstream in("/dev/tty");
 
 // Set the streambuf of std::cin as the streambuf of /dev/tty.
 std::cin.rdbuf(in.rdbuf());
+
 // stdin is now /dev/tty - keyboard input.
 ```
 
@@ -64,12 +65,25 @@ streambuf* rdbuf (streambuf* sb); // sets the object pointed at by sb, clears er
 ```
 Headers: `<ios> <iostream>`.
 
+Streams & Stream Buffers
+------------------------
+A _stream_ is a communication channel between a programme and it's environment.
+
+Streams involve data flowing from a source to a destination - for example, data may flow from the programme to the screen, or may be read from the user's keyboard into the programme.
+
+A _stream buffer_ is a memory buffer for the stream - the `streambuf` is an interface that defines a mapping from a stream to a device, file or memory. 
+
+* The stream is responsible for converting data into an appropriate format.
+* The streambuf actually communicates the data.
+
 
 References
 ----------
 * [fstream][2]
 * [Controlling terminal: `/dev/tty`][3]
+* [Stream Buffers][3]: YouTube, Bo Qian
 
 [1]: main.cpp#L22
 [2]: http://www.cplusplus.com/reference/fstream/fstream/
 [3]: http://tldp.org/HOWTO/Text-Terminal-HOWTO-7.html#ss7.3
+[4]: https://www.youtube.com/watch?v=HwtFcT-ueu8
