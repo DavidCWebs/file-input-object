@@ -82,8 +82,10 @@ References
 * [fstream][2]
 * [Controlling terminal: `/dev/tty`][3]
 * [Stream Buffers][3]: YouTube, Bo Qian
+* [Output with ostream & ios][5]
 
 [1]: main.cpp#L22
 [2]: http://www.cplusplus.com/reference/fstream/fstream/
 [3]: http://tldp.org/HOWTO/Text-Terminal-HOWTO-7.html#ss7.3
 [4]: https://www.youtube.com/watch?v=HwtFcT-ueu8
+[5]: https://www.learncpp.com/cpp-tutorial/183-output-with-ostream-and-ios/
